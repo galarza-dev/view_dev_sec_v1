@@ -1,20 +1,22 @@
 // index.js
 const express = require('express');
-const app = express();
-const port = 3000;
+const cors = require('cors');
 
-// Middleware para parsear JSON
+const app = express();
+const PORT = 3000;
+
+// Middleware
+app.use(cors());
 app.use(express.json());
 
-// Ruta POST para recibir datos del frontend
+// Ruta de prueba
 app.post('/capture', (req, res) => {
-  console.log('📥 Datos recibidos del navegador:');
+  console.log('✅ Datos recibidos del frontend:');
   console.log(req.body);
-
-  res.status(200).json({ message: 'Datos recibidos correctamente' });
+  res.status(200).json({ message: 'Datos recibidos exitosamente ✅' });
 });
 
 // Iniciar servidor
-app.listen(port, () => {
-  console.log(`🚀 Backend escuchando en http://localhost:${port}`);
+app.listen(PORT, () => {
+  console.log(`🚀 Servidor backend escuchando en http://localhost:${PORT}`);
 });
